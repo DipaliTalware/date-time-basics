@@ -4,10 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-//Step 1: Write code to output the current date and time.
-//Step 2: Add a timespan of 2 weeks to the current date and output the new date.
-//Step 3: Compare the current date with a specified future date and output whether the current date is before or after the specified date.
-//Step 4: Calculate the difference in days between two arbitrary dates and output the result.
 public class Main {
     public static void main(String[] args) {
         LocalDateTime timeRightNow = LocalDateTime.now();
@@ -28,6 +24,18 @@ public class Main {
 
         long differenceInDays = ChronoUnit.DAYS.between(currentDate, futureDate);
         System.out.println(differenceInDays);
+
+        Animal animal = new Animal("Cat", LocalDate.of(2020,9,17));
+
+        LocalDate birthdayDate = animal.getBirthday().withYear(currentDate.getYear());
+        if(birthdayDate.isBefore(currentDate)) {
+            birthdayDate = birthdayDate.plusYears(1);
+        }
+
+        long daysLeft = ChronoUnit.DAYS.between(currentDate, birthdayDate);
+
+        System.out.println("birthday = " + birthdayDate);
+        System.out.println("daysLeft = " + daysLeft);
 
     }
 }
